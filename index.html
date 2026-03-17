@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Demonstrations - Mechanics</title>
+    <title>Syracuse University Physics Lecture Demonstrations</title>
     <style>
         * {
             margin: 0;
@@ -21,96 +21,121 @@
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 0.5rem;
         }
         
         header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .search-container {
+            font-size: 1.2rem;
+            opacity: 0.95;
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        #searchBox {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        
-        #searchBox:focus {
-            border-color: #667eea;
+            margin: 0 auto;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
         }
         
-        .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .demo-card {
+        .intro {
             background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .demo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        }
-        
-        .demo-code {
-            font-family: 'Courier New', monospace;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .demo-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .stats {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             text-align: center;
         }
         
-        .stats h3 {
+        .intro h2 {
             color: #667eea;
-            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .section-count {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            color: #666;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .section-link {
+            margin-top: 1rem;
+            color: #667eea;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         footer {
@@ -121,383 +146,155 @@
             margin-top: 4rem;
         }
         
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-            display: none;
+        .footer-links {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Syracuse University Physics Demonstrations</h1>
-        <p>Mechanics - Interactive Demo Catalog</p>
+        <h1>Syracuse University</h1>
+        <h1>Physics Lecture Demonstrations</h1>
+        <p>Explore our comprehensive collection of physics demonstrations across all major areas of study</p>
     </header>
     
-    <div class="search-container">
-        <input type="text" id="searchBox" placeholder="Search demos by name or code...">
-    </div>
-    
     <div class="container">
-        <div class="stats">
-            <h3 id="demoCount">297</h3>
-            <p>Total Demonstrations</p>
+        <div class="intro">
+            <h2>Welcome to the Physics Demonstration Library</h2>
+            <p>This collection contains over 1,500 physics demonstrations organized by topic. Each demonstration includes detailed instructions, equipment lists, and explanations of the underlying physics concepts.</p>
+            
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Major Sections</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1,500+</div>
+                    <div class="stat-label">Demonstrations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Sub-Topics</div>
+                </div>
+            </div>
         </div>
         
-        <div class="demo-grid" id="demoGrid"></div>
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Explore by Section</h2>
         
-        <div class="no-results" id="noResults">
-            <h2>No demos found</h2>
-            <p>Try a different search term</p>
+        <div class="sections-grid">
+            <a href="mechanics.html" class="section-card">
+                <div class="section-icon">⚙️</div>
+                <div class="section-title">Mechanics</div>
+                <div class="section-count">~297 Demonstrations</div>
+                <div class="section-description">
+                    Classical mechanics including motion, forces, energy, momentum, rotation, and oscillations.
+                </div>
+                <div class="section-link">
+                    Explore Mechanics →
+                </div>
+            </a>
+            
+            <a href="fluids.html" class="section-card">
+                <div class="section-icon">💧</div>
+                <div class="section-title">Fluid Dynamics</div>
+                <div class="section-count">~120 Demonstrations</div>
+                <div class="section-description">
+                    Surface tension, static pressure, buoyancy, flow dynamics, and properties of fluids.
+                </div>
+                <div class="section-link">
+                    Explore Fluids →
+                </div>
+            </a>
+            
+            <a href="waves.html" class="section-card">
+                <div class="section-icon">🌊</div>
+                <div class="section-title">Oscillations & Waves</div>
+                <div class="section-count">~200 Demonstrations</div>
+                <div class="section-description">
+                    Pendula, springs, wave motion, sound, acoustics, and musical instruments.
+                </div>
+                <div class="section-link">
+                    Explore Waves →
+                </div>
+            </a>
+            
+            <a href="thermo.html" class="section-card">
+                <div class="section-icon">🌡️</div>
+                <div class="section-title">Thermodynamics</div>
+                <div class="section-count">~150 Demonstrations</div>
+                <div class="section-description">
+                    Heat, temperature, thermal properties, phase changes, kinetic theory, and gas laws.
+                </div>
+                <div class="section-link">
+                    Explore Thermodynamics →
+                </div>
+            </a>
+            
+            <a href="em.html" class="section-card">
+                <div class="section-icon">⚡</div>
+                <div class="section-title">Electricity & Magnetism</div>
+                <div class="section-count">~400 Demonstrations</div>
+                <div class="section-description">
+                    Electrostatics, circuits, magnetism, induction, AC/DC, and electromagnetic radiation.
+                </div>
+                <div class="section-link">
+                    Explore E&M →
+                </div>
+            </a>
+            
+            <a href="optics.html" class="section-card">
+                <div class="section-icon">🔬</div>
+                <div class="section-title">Optics</div>
+                <div class="section-count">~250 Demonstrations</div>
+                <div class="section-description">
+                    Light, reflection, refraction, lenses, interference, diffraction, and polarization.
+                </div>
+                <div class="section-link">
+                    Explore Optics →
+                </div>
+            </a>
+            
+            <a href="modern.html" class="section-card">
+                <div class="section-icon">⚛️</div>
+                <div class="section-title">Modern Physics</div>
+                <div class="section-count">~120 Demonstrations</div>
+                <div class="section-description">
+                    Quantum mechanics, atomic physics, nuclear physics, relativity, and lasers.
+                </div>
+                <div class="section-link">
+                    Explore Modern Physics →
+                </div>
+            </a>
+            
+            <a href="astronomy.html" class="section-card">
+                <div class="section-icon">🌌</div>
+                <div class="section-title">Astronomy</div>
+                <div class="section-count">~250 Demonstrations</div>
+                <div class="section-description">
+                    Solar system, stellar astronomy, cosmology, telescopes, and astronomical instruments.
+                </div>
+                <div class="section-link">
+                    Explore Astronomy →
+                </div>
+            </a>
         </div>
     </div>
     
     <footer>
-        <p>Syracuse University Physics Lecture Demonstrations</p>
-        <p style="opacity: 0.7; margin-top: 0.5rem;">© 2025 - Educational Resource</p>
+        <p><strong>Syracuse University Physics Lecture Demonstrations</strong></p>
+        <p style="opacity: 0.8; margin-top: 0.5rem;">Instructional Lab Manager: Sam Sampere</p>
+        <p style="opacity: 0.7; margin-top: 1rem; font-size: 0.9rem;">© 2025 Syracuse University - Educational Resource</p>
     </footer>
-    
-    <script>
-        const demos = [
-            { code: "1C10.25", title: "Air Track - Constant Velocity" },
-            { code: "1C10.62", title: "Time of Flight" },
-            { code: "1C20.16", title: "Free-Fall - Drop a Ball and Paper" },
-            { code: "1C20.18", title: "Free-Fall and Air Resistance" },
-            { code: "1C20.20", title: "Free-Fall - Time Intervals" },
-            { code: "1C20.30", title: "Inclined Air Track - Timed Intervals" },
-            { code: "1C20.37", title: "Inclined Tracks - Timed Intervals" },
-            { code: "1C20.40", title: "Inclined Track - Timed Intervals" },
-            { code: "1C20.75", title: "Fan Carts" },
-            { code: "1C30.16", title: "Free-Fall Apparatus" },
-            { code: "1C30.35", title: "Picket Fence and Photogate" },
-            { code: "1C30.42", title: "Falling Drops" },
-            { code: "1C30.55", title: "Reaction Times" },
-            { code: "1C30.57", title: "Balance A Stick - Reaction Time" },
-            { code: "1D10.11", title: "Vector Toys" },
-            { code: "1D10.15", title: "Car on a Moving Sheet - Velocity Addition" },
-            { code: "1D10.20", title: "Bicycle Wheel - Cycloid Generator" },
-            { code: "1D10.40", title: "Angular Velocity - Bicycle Wheel" },
-            { code: "1D15.20", title: "High Road Low Road" },
-            { code: "1D15.36", title: "Ball & Incline Demos" },
-            { code: "1D15.50", title: "Brachistochrone" },
-            { code: "1D15.53", title: "Cycloid Track" },
-            { code: "1D40.12", title: "Hammer" },
-            { code: "1D40.15", title: "Bola" },
-            { code: "1D40.30", title: "Baton" },
-            { code: "1D40.35", title: "Binary System" },
-            { code: "1D40.50", title: "Air Track Pendulum" },
-            { code: "1D50.20", title: "Whirligig/Twirling Weights" },
-            { code: "1D50.25", title: "Conical Pendulum" },
-            { code: "1D50.26", title: "Conical Pendulum - Flying Pig on a String" },
-            { code: "1D50.28", title: "Carnival Ride Model - Swing Ride" },
-            { code: "1D50.30", title: "Carnival Ride Model - Cylinder" },
-            { code: "1D50.33", title: "Central Forces - Carry a Ball" },
-            { code: "1D50.40", title: "Central Forces - Pail of Water - Wine Butler/Waiter's Tray" },
-            { code: "1D50.45", title: "Central Forces - Penny & Coat Hanger" },
-            { code: "1D50.50", title: "Central Forces - Centripetal Force" },
-            { code: "1D50.52", title: "Central Forces - Centripetal Force - 1 to 4 mass ratio" },
-            { code: "1D50.57", title: "Central Forces - Ball on Hoop" },
-            { code: "1D50.60", title: "Banked Track" },
-            { code: "1D50.69", title: "Central Forces Puzzle" },
-            { code: "1D52.10", title: "Central Forces - Centrifugal Flattening" },
-            { code: "1D52.20", title: "Water Parabola" },
-            { code: "1D52.30", title: "Water Centrifuge with Cork and Balls" },
-            { code: "1D52.33", title: "Rotating Floats in Water" },
-            { code: "1D52.37", title: "Centrifuge" },
-            { code: "1D52.40", title: "Rotating Candle" },
-            { code: "1D55.10", title: "Central Forces - Broken Ring" },
-            { code: "1D55.15", title: "Central Forces - T-Ball on a String" },
-            { code: "1D55.20", title: "Tangential Central Forces - Grinding Wheel & Sparks" },
-            { code: "1D55.30", title: "Falling Off The Merry-Go-Round" },
-            { code: "1D60.10", title: "Property of Inertia Demo - Jeep & Gun" },
-            { code: "1D60.12", title: "Property of Inertia - Air Track" },
-            { code: "1D60.20", title: "Simultaneous Fall - 2nd Law Apparatus" },
-            { code: "1D60.30", title: "Shoot the Monkey" },
-            { code: "1D60.40", title: "Projectile Motion - Spring Gun" },
-            { code: "1D60.55", title: "Parabolic Trajectory on an Incline Plane" },
-            { code: "1D60.56", title: "Parabolic Trajectory - Block and Tables" },
-            { code: "1D60.70", title: "Parabolic Trajectory - Bomb Run" },
-            { code: "1D60.75", title: "Parabolic Falling Droplets - Blood Spatter" },
-            { code: "1D60.90", title: "Projectile Motion - 'Newton's Cannon' Computer Simulations" },
-            { code: "1E10.10", title: "Frames of Reference - Car and Moving Sheet" },
-            { code: "1E10.20", title: "Frames of Reference" },
-            { code: "1E10.21", title: "Frames of Reference - Ballistic Cart & Camera" },
-            { code: "1E10.31", title: "Ruler on a Wheel or Cylinder" },
-            { code: "1E20.10", title: "Foucault Pendulum" },
-            { code: "1E20.17", title: "Spirograph" },
-            { code: "1E20.21", title: "Rotating Frame - O.H. Transparency Model" },
-            { code: "1E30.28", title: "Coriolis Effect" },
-            { code: "1F10.10", title: "Inertial Balance" },
-            { code: "1F10.15", title: "Oscillation Balance" },
-            { code: "1F20.10", title: "Inertia of Rest - Mass and String" },
-            { code: "1F20.11", title: "Inertia of Rest - Bowling Ball" },
-            { code: "1F20.13", title: "Inertia of Rest - Paper - Tug of War" },
-            { code: "1F20.14", title: "Inertia of Rest - Tissue Paper Roll" },
-            { code: "1F20.20", title: "Smash Your Hand" },
-            { code: "1F20.25", title: "Bed of Nails - Smash a Block" },
-            { code: "1F20.30", title: "Inertia of Rest - Glass of Water" },
-            { code: "1F20.33", title: "Inertia of Rest - Cylinder" },
-            { code: "1F20.34", title: "Inertia of Rest - Coin/Card Snap - Daruma Otoshi" },
-            { code: "1F20.35", title: "Egg and Pizza Pan" },
-            { code: "1F20.36", title: "Embroidery Hoop and Pen" },
-            { code: "1F20.40", title: "Stick and Wine Glasses" },
-            { code: "1F20.55", title: "Inertia of Rest - Inertia Hat" },
-            { code: "1F20.60", title: "Tighten a Hammer Head - Knife & Potato" },
-            { code: "1F30.20", title: "Inertia of Motion - Standing Pulse - Chain" },
-            { code: "1F30.21", title: "Water Hammer" },
-            { code: "1F30.25", title: "Inertia of Motion - Air Track & Homer" },
-            { code: "1F30.40", title: "Drive a Nail by Hand" },
-            { code: "1G10.10", title: "Uniform Acceleration due to Earth's Gravity - Air Track" },
-            { code: "1G10.30", title: "Acceleration - Mass on a Scale" },
-            { code: "1G10.40", title: "Atwood's Machine" },
-            { code: "1G10.47", title: "Modified Atwoods Machine" },
-            { code: "1G10.51", title: "Car vs. Motorcycle vs. Jet Acceleration" },
-            { code: "1G30.30", title: "Hourglass" },
-            { code: "1H10.10", title: "Push Me - Pull Me Carts" },
-            { code: "1H10.15", title: "Action-Reaction on Air Track" },
-            { code: "1H10.20", title: "Fan Cart & Sails" },
-            { code: "1H10.25", title: "Helicopter Rotor" },
-            { code: "1H10.30", title: "Rocket Car" },
-            { code: "1H10.35", title: "Bend a Wall" },
-            { code: "1H10.40", title: "Burp Gun & Potato Gun" },
-            { code: "1I10.10", title: "Amusement Park Physics" },
-            { code: "1I10.20", title: "Physics of Automobiles" },
-            { code: "1I10.30", title: "Measurements in Airplanes or Jets" },
-            { code: "1I10.40", title: "Physics of Trains" },
-            { code: "1I10.42", title: "Friction and Trains" },
-            { code: "1I10.50", title: "Physics of Ships" },
-            { code: "1J10.09", title: "Center of Mass Demo" },
-            { code: "1J10.10", title: "Map of a State" },
-            { code: "1J10.12", title: "Wooden Plates" },
-            { code: "1J10.25", title: "Weight of a Meter Stick / Torque Method" },
-            { code: "1J10.30", title: "Meter Stick on Fingers" },
-            { code: "1J10.33", title: "Balancing Coin" },
-            { code: "1J10.35", title: "Meterstick on Rotating Shafts" },
-            { code: "1J11.10", title: "Leaning Tower Demo" },
-            { code: "1J11.15", title: "Incline and Tipping Block" },
-            { code: "1J11.20", title: "2 x 4 Tower" },
-            { code: "1J11.30", title: "Tipping Boat" },
-            { code: "1J11.40", title: "Human Center of Gravity" },
-            { code: "1J20.05", title: "Gömböc - Stable and Unstable Equilibrium" },
-            { code: "1J20.10", title: "Stable, Unstable, and Neutral Equilibrium" },
-            { code: "1J20.30", title: "Sky Hook" },
-            { code: "1J20.31", title: "Hinged Stick Paradox" },
-            { code: "1J20.32", title: "Hang Spoon on Nose" },
-            { code: "1J20.35", title: "Bird, Plane, and Circus Clown" },
-            { code: "1J20.60", title: "Wine Butler" },
-            { code: "1J20.65", title: "Balancing Soda Can" },
-            { code: "1J20.70", title: "Rolling Uphill" },
-            { code: "1J20.80", title: "Rolling Cylinders - Train Wheels Rims" },
-            { code: "1J30.10", title: "Resolution of Forces on an Inclined Plane" },
-            { code: "1J30.20", title: "Tension in a String" },
-            { code: "1J30.22", title: "Tension in a Spring" },
-            { code: "1J30.23", title: "Tension in a Spring - Parallel and Series Scales" },
-            { code: "1J30.25", title: "Forces on a String - Three Students and a Rope" },
-            { code: "1J30.30", title: "Break a Wire With a Hinge" },
-            { code: "1J30.50", title: "Force Table, Vertical and Horizontal" },
-            { code: "1J30.60", title: "Sailing Against the Wind - Air Track" },
-            { code: "1J30.70", title: "Rice in a Tube" },
-            { code: "1J30.75", title: "Stand on Eggs" },
-            { code: "1J30.90", title: "Catenary" },
-            { code: "1J40.10", title: "Grip Bar" },
-            { code: "1J40.15", title: "Torque Wrench" },
-            { code: "1J40.20", title: "Torque Beam" },
-            { code: "1J40.40", title: "Loaded Beam" },
-            { code: "1J40.50", title: "Roberval Balance" },
-            { code: "1J40.70", title: "Crane and Crane Boom" },
-            { code: "1K10.20", title: "Ladder Forces" },
-            { code: "1K10.30", title: "Walk The Spool" },
-            { code: "1K10.40", title: "Tricycle" },
-            { code: "1K10.50", title: "Rolling a Disc Uphill" },
-            { code: "1K20.11", title: "Tug of War" },
-            { code: "1K20.14", title: "Variable Friction - Dynamics Track or Air Track" },
-            { code: "1K20.35", title: "Inclined Plane - Angle of Repose" },
-            { code: "1K20.36", title: "Inclined Plane - Acceleration of a Block" },
-            { code: "1K20.37", title: "Static Friction - Rolling Wheel" },
-            { code: "1K20.42", title: "Rolling and Sliding Friction" },
-            { code: "1K20.70", title: "Falling Bottle Capstan" },
-            { code: "1K20.76", title: "Climbing Monkey" },
-            { code: "1K20.90", title: "Air Track/Platform Friction" },
-            { code: "1K30.10", title: "Bed of Nails - Stand on Dixie Cups" },
-            { code: "1L10.30", title: "Cavendish Balance" },
-            { code: "1L20.10", title: "Gravity Well - Black Hole" },
-            { code: "1L20.25", title: "String Unwinding From a Pole - Relaxation Oscillator" },
-            { code: "1L20.30", title: "Escape Velocity (Escape from a Gravity Well)" },
-            { code: "1L20.40", title: "Conical Sections" },
-            { code: "1L20.50", title: "Ellipse Maker" },
-            { code: "1L20.60", title: "Kepler's Laws" },
-            { code: "1L20.66", title: "Orbits on the Overhead/Mass Spectrometer Model" },
-            { code: "1M10.10", title: "Ball or Block on a Shelf" },
-            { code: "1M10.16", title: "Lift or Carry a Block" },
-            { code: "1M10.20", title: "Pile Driver" },
-            { code: "1M20.11", title: "Pulleys and Pulley Systems" },
-            { code: "1M20.20", title: "Block & Tackle" },
-            { code: "1M20.36", title: "Work of a Screw" },
-            { code: "1M20.37", title: "Archimedes' Screw" },
-            { code: "1M20.40", title: "1st, 2nd, and 3rd Class Levers" },
-            { code: "1M20.60", title: "Wheel & Axle" },
-            { code: "1M20.65", title: "Non-Circular Wheels" },
-            { code: "1M30.30", title: "Wood Pecker" },
-            { code: "1M40.10", title: "Large Classroom Pendulum" },
-            { code: "1M40.12", title: "Tension in a Pendulum String" },
-            { code: "1M40.15", title: "Stopped Pendulum" },
-            { code: "1M40.20", title: "Loop-the-Loop" },
-            { code: "1M40.25", title: "Gravity Rail with Hill - Potential Wells" },
-            { code: "1M40.30", title: "Gravity Rail" },
-            { code: "1M40.37", title: "Slingshots" },
-            { code: "1M40.41", title: "Ballistic Pendulum" },
-            { code: "1M40.42", title: "Ballistic Pendulum - Sliding Block" },
-            { code: "1M40.43", title: "Work of a Bow or Crossbow" },
-            { code: "1M40.50", title: "Yo-Yo's and Maxwell's Wheel - Speed of Translation" },
-            { code: "1M40.63", title: "Spring = X-Squared Energy Dependence" },
-            { code: "1M40.64", title: "Spring Gun and Dart Set - Air Track & Carts" },
-            { code: "1M40.65", title: "Spring Gun and Balls of Different Mass" },
-            { code: "1M40.67", title: "Spring Jumper & Compression Spring" },
-            { code: "1M40.73", title: "Air Track - Damped Mechanical Oscillator - Energy" },
-            { code: "1M40.74", title: "Incline and Cart" },
-            { code: "1M40.90", title: "Celts or Rattle Backs" },
-            { code: "1M40.91", title: "High Bounce Paradox - Hopper Popper, Jumping Pencil, Slap Bracelet, etc." },
-            { code: "1M40.94", title: "Fiddlesticks or Gyro Ring, and Hula Hoop" },
-            { code: "1M40.95", title: "Trebuchet" },
-            { code: "1M40.97", title: "Catapult" },
-            { code: "1M40.99", title: "Onager" },
-            { code: "1M50.20", title: "Bicycle Power - Bicycle Drive Train" },
-            { code: "1N10.11", title: "Impulse - Time of contact" },
-            { code: "1N10.20", title: "Eggs in a Sheet" },
-            { code: "1N10.30", title: "Impulse Demo - Dropping Beaker/Eggs" },
-            { code: "1N20.10", title: "See-Saw Center of Mass" },
-            { code: "1N20.15", title: "Center of Mass - Platform" },
-            { code: "1N20.20", title: "Conservation of Linear Momentum - Air Track" },
-            { code: "1N20.40", title: "Pop Pop Boat" },
-            { code: "1N22.00", title: "Rockets" },
-            { code: "1N22.10", title: "Rocket Car - Fire Extinguisher" },
-            { code: "1N22.20", title: "Water Rocket" },
-            { code: "1N22.23", title: "Air Track - Air Track Rocket" },
-            { code: "1N22.25", title: "Balloon Rockets" },
-            { code: "1N22.33", title: "Rocket Car - Little Cart" },
-            { code: "1N22.35", title: "Pop Bottle Alcohol Rocket" },
-            { code: "1N22.51", title: "Firehose Instability" },
-            { code: "1N22.90", title: "Altitude or Height Measurments" },
-            { code: "1N30.10", title: "Newton Spheres, Clackers" },
-            { code: "1N30.15", title: "Newton's Trough" },
-            { code: "1N30.21", title: "Elastic & Inelastic Collision of Solids - Balls" },
-            { code: "1N30.30", title: "Elastic & Inelastic Collision of Solids - Air Track" },
-            { code: "1N30.45", title: "Inelastic Collision - Speed of a Ball" },
-            { code: "1N30.50", title: "Impulse Demo - Elastic and Inelastic Pendulum" },
-            { code: "1N30.60", title: "Tennis Ball and Basketball" },
-            { code: "1N30.62", title: "Multiple Ball Drop - Astro-Blaster (TM)" },
-            { code: "1N40.15", title: "Coin Collisions" },
-            { code: "1N40.20", title: "Air Table Collisions" },
-            { code: "1N40.60", title: "Superball" },
-            { code: "1Q10.10", title: "Inertial Wands" },
-            { code: "1Q10.30", title: "Moments of Inertia - Hoops and Disks" },
-            { code: "1Q10.65", title: "Moment of Inertia of a Ball" },
-            { code: "1Q10.75", title: "Parallel Axis Wheels" },
-            { code: "1Q20.10", title: "Angular Momentum Machine" },
-            { code: "1Q20.15", title: "Angular Momentum - Rotating Air Table" },
-            { code: "1Q20.20", title: "Moments of Inertia - Angular Acceleration Wheel" },
-            { code: "1Q20.30", title: "Rolling Spool - Axles" },
-            { code: "1Q20.46", title: "Moments of Inertia - Energy of Translation" },
-            { code: "1Q20.50", title: "Falling Chimney" },
-            { code: "1Q20.65", title: "Falling Pencil or Rod" },
-            { code: "1Q30.40", title: "Fluctuating Magnetic Fields/Cons. of Angular Momentum" },
-            { code: "1Q30.90", title: "Magic Windmill" },
-            { code: "1Q40.10", title: "Cons. of Angular Momentum Demo - Stool and Weights" },
-            { code: "1Q40.20", title: "Cons. of Angular Momentum Demos - Squeezatron" },
-            { code: "1Q40.22", title: "Conservation of Angular Momentum - Hoberman Sphere" },
-            { code: "1Q40.30", title: "Cons. of Angular Momentum Demo - Stool and Bicycle Wheel" },
-            { code: "1Q40.40", title: "Action-Reaction Demo - Train Demo" },
-            { code: "1Q40.50", title: "Action-Reaction Demo - Pocket Watch - Tail Wags the Dog" },
-            { code: "1Q40.57", title: "Cons. of Angular Momentum - Air Table" },
-            { code: "1Q40.60", title: "Cons. of Angular Momentum - Ball or Cylinder Paper Pull" },
-            { code: "1Q40.70", title: "Cons. of Angular Momentum - Vortex Cone" },
-            { code: "1Q40.85", title: "Feynman Reverse Sprinkler" },
-            { code: "1Q40.90", title: "Acoustic Propulsion - Feynman Sprinkler (Acoustic Version)" },
-            { code: "1Q50.01", title: "Precession - Bicycle Wheels, Gyroscopes, and Tops" },
-            { code: "1Q50.20", title: "Bicycle Wheel - On Stand" },
-            { code: "1Q50.21", title: "Bicycle Wheels - Suspended" },
-            { code: "1Q50.25", title: "Double Wheel Gyro" },
-            { code: "1Q50.30", title: "MITAC Gyro" },
-            { code: "1Q50.40", title: "Suitcase Gyro" },
-            { code: "1Q50.56", title: "Ball On A Rotating Turntable" },
-            { code: "1Q50.70", title: "Gyroscopes" },
-            { code: "1Q50.72", title: "Gyroscopes - Ship Stabilizer" },
-            { code: "1Q50.90", title: "Maxwell's Tops" },
-            { code: "1Q60.16", title: "Old Fashioned Top" },
-            { code: "1Q60.25", title: "Euler's Disk & Wobbler" },
-            { code: "1Q60.30", title: "Tippy Top" },
-            { code: "1Q60.35", title: "Football" },
-            { code: "1Q60.36", title: "Spinning Eggs" },
-            { code: "1Q60.38", title: "Spinning Double Spheres" },
-            { code: "1Q60.40", title: "Stable and Unstable Axis of Rotation - Toss the Block" },
-            { code: "1Q60.51", title: "Spinning Loop - String Shooter" },
-            { code: "1Q60.81", title: "Dynamic Balancing - Tensor" },
-            { code: "1Q60.85", title: "Balancing - Spin a Penny" },
-            { code: "1R10.15", title: "The Suspended Slinky" },
-            { code: "1R20.11", title: "Stress - Elastic Limits" },
-            { code: "1R20.15", title: "Young's Modulus" },
-            { code: "1R20.28", title: "Smashing Spheres - Aluminum Foil" },
-            { code: "1R20.70", title: "Prince Rupert's Drops" },
-            { code: "1R30.20", title: "Shear - Foam Block" },
-            { code: "1R30.21", title: "Shear - Bend a Rod" },
-            { code: "1R30.30", title: "Shear - Spring Cubes, Crystal Lattice" },
-            { code: "1R30.40", title: "Horizontal Torsion Apparatus - Rod" },
-            { code: "1R40.10", title: "Coefficient of Restitution" },
-            { code: "1R40.30", title: "Happy - Unhappy Balls" },
-            { code: "1R50.20", title: "Crystal Models and Lattices" },
-            { code: "1R50.24", title: "Crystals - Mirror Images and Symmetry" },
-            { code: "1R50.30", title: "Crystals, Crystal Structure, Atomic Planes, & Metals" },
-            { code: "1R50.31", title: "Snow and Ice Crystals" },
-            { code: "1R50.40", title: "Faults in a Crystal" },
-            { code: "9C40.40", title: "Fused Quartz" }
-        ];
-        
-        const demoGrid = document.getElementById('demoGrid');
-        const searchBox = document.getElementById('searchBox');
-        const noResults = document.getElementById('noResults');
-        const demoCount = document.getElementById('demoCount');
-        
-        function createFileName(code, title) {
-            return code + '-' + title.replace(/[^a-zA-Z0-9\s\.-]/g, '').replace(/\s+/g, '-') + '.html';
-        }
-        
-        function renderDemos(demosToShow) {
-            demoGrid.innerHTML = '';
-            
-            if (demosToShow.length === 0) {
-                demoGrid.style.display = 'none';
-                noResults.style.display = 'block';
-                return;
-            }
-            
-            demoGrid.style.display = 'grid';
-            noResults.style.display = 'none';
-            
-            demosToShow.forEach(demo => {
-                const card = document.createElement('a');
-                card.className = 'demo-card';
-                card.href = createFileName(demo.code, demo.title);
-                card.innerHTML = `
-                    <div class="demo-code">${demo.code}</div>
-                    <div class="demo-title">${demo.title}</div>
-                `;
-                demoGrid.appendChild(card);
-            });
-            
-            demoCount.textContent = demosToShow.length;
-        }
-        
-        searchBox.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = demos.filter(demo => 
-                demo.code.toLowerCase().includes(searchTerm) ||
-                demo.title.toLowerCase().includes(searchTerm)
-            );
-            renderDemos(filtered);
-        });
-        
-        renderDemos(demos);
-    </script>
 </body>
 </html>
